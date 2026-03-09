@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(45deg, #246952, #252b56);
+        }
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-style: italic;
+            font-size: 6rem;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        Loading time...
+    </div>
+    <script>
+        // Update the clock every second with Eastern Time (America/New_York)
+        function updateESTClock() {
+            const now = new Date();
+                const fmt = new Intl.DateTimeFormat('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true,
+                    timeZone: 'America/New_York'
+                });
+            document.getElementById('clock').textContent = fmt.format(now);
+        }
+        updateESTClock();
+        setInterval(updateESTClock, 1000);
+    </script>
+</body>
+</html>
